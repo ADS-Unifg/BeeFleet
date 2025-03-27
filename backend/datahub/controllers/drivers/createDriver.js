@@ -2,24 +2,13 @@ import { prisma } from "../../config/prisma.js";
 
 export const createDriver = async (req, res) => {
     try {
-        const { name, phone, license } = req.body;
+        const { name, phone, license, managerId } = req.body;
 
-        if (!name || !phone || !license) {
+        if (!name || !phone || !license || !managerId) {
             return res.status(400).json({
                 success: false,
                 message:
-                    "Missing required fields: name, phone, and license are required",
-            });
-        }
-
-        const existingDriver = await prisma.driver.findFirst({
-            where: { license },
-        });
-
-        if (existingDriver) {
-            return res.status(400).json({
-                success: false,
-                message: "Driver with this license already exists",
+                    "Missing required fields: name, phone, license, and managerId are required",
             });
         }
 
@@ -28,7 +17,7 @@ export const createDriver = async (req, res) => {
                 name,
                 phone,
                 license,
-                status: "AVAILABLE",
+                managerId,
             },
         });
 

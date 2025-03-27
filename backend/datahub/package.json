@@ -14,7 +14,9 @@
     "description": "",
     "dependencies": {
         "@prisma/client": "^6.5.0",
+        "bcryptjs": "^3.0.2",
         "cors": "^2.8.5",
+        "date-fns": "^4.1.0",
         "dotenv": "^16.4.7",
         "express": "^4.21.2"
     }
