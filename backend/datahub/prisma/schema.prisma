@@ -8,30 +8,32 @@ datasource db {
 }
 
 model Manager {
-    id        String   @id @default(uuid())
-    email     String   @unique
-    password  String
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    events    Event[]
-    reports   Report[]
-    drivers   Driver[]
-    cars      Car[]
+    id           String   @id @default(uuid())
+    email        String   @unique
+    password     String
+    name         String
+    profileImage String?
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+    events       Event[]
+    reports      Report[]
+    drivers      Driver[]
+    cars         Car[]
 }
 
 model Driver {
-    id          String   @id @default(uuid())
-    name        String
-    phone       String
-    license     String   @unique
-    isAvailable Boolean  @default(true)
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
-    manager     Manager  @relation(fields: [managerId], references: [id])
-    managerId   String
-    events      Event[]
-    reports     Report[]
+    id           String   @id @default(uuid())
+    name         String
+    phone        String
+    license      String   @unique
+    profileImage String?
+    isAvailable  Boolean  @default(true)
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+    manager      Manager  @relation(fields: [managerId], references: [id])
+    managerId    String
+    events       Event[]
+    reports      Report[]
 }
 
 model Car {

@@ -14,23 +14,25 @@
     "description": "",
     "dependencies": {
         "@prisma/client": "^6.5.0",
+        "@types/multer": "^1.4.12",
         "cors": "^2.8.5",
         "date-fns": "^4.1.0",
         "dotenv": "^16.4.7",
         "express": "^4.21.2",
         "jsonwebtoken": "^9.0.2",
+        "multer": "^1.4.5-lts.2",
         "ts-node-dev": "^2.0.0",
         "tsx": "^4.19.2",
-        "typescript": "^5.7.2"
+        "typescript": "^5.8.3"
     },
     "devDependencies": {
         "@eslint/js": "^9.16.0",
         "@types/bcrypt": "^5.0.2",
         "@types/bcryptjs": "^2.4.6",
         "@types/cors": "^2.8.17",
-        "@types/express": "^5.0.0",
+        "@types/express": "^5.0.1",
         "@types/jsonwebtoken": "^9.0.9",
-        "@types/node": "^22.10.1",
+        "@types/node": "^22.14.0",
         "eslint": "^9.16.0",
         "globals": "^15.13.0",
         "prisma": "^6.0.1",

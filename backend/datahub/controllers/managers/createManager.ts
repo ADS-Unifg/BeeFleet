@@ -1,13 +1,13 @@
 import { prisma } from "../../config/prisma";
-import { Request, Response } from "express";
-import { CreateManagerRequestBody } from "../../schemas/managerInterface";
+import { Response } from "express";
+import { CreateManagerRequest } from "../../schemas/managerInterface";
 
 export const createManager = async (
-    req: Request<{}, {}, CreateManagerRequestBody>,
+    req: CreateManagerRequest,
     res: Response
 ) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, imageUrl } = req.body;
 
         if (!name || !email || !password) {
             return res.status(400).json({
@@ -28,11 +28,20 @@ export const createManager = async (
             });
         }
 
+        let profileImage = "";
+
+        if (req.file) {
+            profileImage = `/uploads/${req.file.filename}`;
+        } else if (imageUrl) {
+            profileImage = imageUrl;
+        }
+
         const manager = await prisma.manager.create({
             data: {
                 name,
                 email,
                 password: password,
+                profileImage,
             },
         });
 
